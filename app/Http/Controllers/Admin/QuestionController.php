@@ -3,20 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Quiz;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
-class QuizController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $quizzes = Quiz::all();
-        return view('pages.admin.quizzes.index', [
-            'quizzes' => $quizzes
-        ]);
+        
     }
 
     /**
@@ -24,7 +21,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.quizzes.create');
+        //
     }
 
     /**
@@ -33,8 +30,8 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        Quiz::create($data);
-        return redirect()->route('kuis.index');      
+        Question::create($data);
+        return redirect()->back();      
     }
 
     /**
@@ -42,10 +39,7 @@ class QuizController extends Controller
      */
     public function show(string $id)
     {
-        $quiz = Quiz::find($id);
-        return view('pages.admin.quizzes.show', [
-            'quiz' => $quiz
-        ]);
+        //
     }
 
     /**
@@ -53,10 +47,7 @@ class QuizController extends Controller
      */
     public function edit(string $id)
     {
-        $quiz = Quiz::findOrFail($id);
-        return view('pages.admin.quizzes.edit', [
-            'quiz' => $quiz
-        ]);
+        //
     }
 
     /**
@@ -64,10 +55,7 @@ class QuizController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->all();
-        Quiz::findOrFail($id)->update($data);
-        return redirect()->route('kuis.index');
-
+        //
     }
 
     /**
@@ -75,7 +63,7 @@ class QuizController extends Controller
      */
     public function destroy(string $id)
     {
-        Quiz::find($id)->delete();
-        return redirect()->route('kuis.index');
+        Question::find($id)->delete();
+        return redirect()->back();
     }
 }

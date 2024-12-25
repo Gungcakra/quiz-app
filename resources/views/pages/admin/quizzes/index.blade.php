@@ -28,13 +28,13 @@
                         <td>{{ $quiz->description }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="admin-pertanyaan.html" class="btn btn-sm btn-info text-white">
+                                <a href="{{ route('kuis.show',$quiz->id) }}" class="btn btn-sm btn-info text-white">
                                     <i class="bx bx-file"></i> Pertanyaan
                                 </a>
                                 <a href="{{ route('kuis.edit',$quiz->id) }}" class="btn btn-sm btn-warning text-white">
                                     <i class="bx bx-edit"></i> Edit
                                 </a>
-                                <form action="{{ route('kuis.destroy',$quiz->id) }}" method="post">
+                                <form action="{{ route('kuis.destroy',$quiz->id) }}" method="post   ">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-light">
                                         <i class="bx bx-trash"></i> Hapus
