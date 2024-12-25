@@ -13,7 +13,7 @@
         <div class="card-body">
             <h5 class="text-dark mb-5">{{ $question->question }}</h5>
 
-            <form action="{{ route('quiz.pertanyaan.store',['quiz_id' => $quiz_id, 'question_id' => $question->id]) }}" method="post">
+            <form action="{{ route('quiz.pertanyaan.store', ['quiz_id' => $quiz_id, 'question_id' => $question->id]) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <div class="form-check">

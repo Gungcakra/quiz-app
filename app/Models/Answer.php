@@ -17,6 +17,6 @@ class Answer extends Model
     }
     public function question()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(related: Question::class);
     }
 }

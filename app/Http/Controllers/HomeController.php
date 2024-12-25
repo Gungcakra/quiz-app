@@ -57,10 +57,10 @@ class HomeController extends Controller
 
         Answer::create([
             'user_id' => Auth::user()->id,
-            'question_id' => $question_id,
+            'question_id' => $question->id,
             'quiz_id' => $quiz_id,
             'answer' => $request->answer,
-            'is_correct' => $question->correct_answer == $request->answer ? 'yes' : 'no'
+            'is_correct' => $question->correct == $request->answer ? 'yes' : 'no'
         ]);
 
         $next_question = Question::where('quiz_id',$quiz_id)->where('id','>',$question_id)->orderBy('id','asc')->first();
@@ -68,7 +68,7 @@ class HomeController extends Controller
         if($next_question)
         {
             return redirect()->route('quiz.pertanyaan',[
-                'quiz' => $quiz_id,
+                'quiz_id' => $quiz_id,
                 'question_id' => $next_question->id
             ]);
         }else{
